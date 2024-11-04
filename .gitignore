@@ -4,3 +4,9 @@
 __pycache__/
 *.db
 *.sqlite
+coverage-reports/
+*.xml
+*.coverage
+*.sh
+.scannerwork
+*.properties

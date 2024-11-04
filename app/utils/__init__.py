@@ -1,1 +1,1 @@
-from .utils import mapping
+from .utils import Utils

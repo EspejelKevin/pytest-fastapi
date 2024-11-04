@@ -11,8 +11,24 @@ def on_startup():
     SQLModel.metadata.create_all(AppContainer.db_engine())
 
 
+tags = [
+    {
+        'name': 'Health Check',
+        'description': 'Check status of the service. Verify if the service is up'
+    },
+    {
+        'name': 'Movies',
+        'description': 'CRUD Movies'
+    }
+]
+
+
 app = FastAPI(
-    on_startup=[on_startup]
+    title='Movies',
+    summary='CRUD Movies',
+    description='Service to handler operations CRUD about Movies',
+    openapi_tags=tags,
+    on_startup=[on_startup],
 )
 
 app.include_router(router)

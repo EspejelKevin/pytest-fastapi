@@ -5,3 +5,4 @@ pytest-env
 sqlmodel
 uvicorn
 dependency-injector
+coverage

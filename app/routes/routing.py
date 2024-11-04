@@ -7,12 +7,12 @@ from schemas import MovieSchemaIn, UpdateMovieSchema
 router = APIRouter(prefix='/api/v1')
 
 
-@router.get('/check/status')
+@router.get('/check/status', tags=['Health Check'])
 def check_status() -> dict:
     return {'status': 'ok'}
 
 
-@router.get('/movies')
+@router.get('/movies', tags=['Movies'])
 def get_movies() -> JSONResponse:
     with container.AppContainer.scope() as app:
         movie_controller: MovieController = app.controllers.movie_controller()
@@ -20,7 +20,7 @@ def get_movies() -> JSONResponse:
         return JSONResponse(content=response.content, status_code=response.status_code)
 
 
-@router.get('/movies/{id}')
+@router.get('/movies/{id}', tags=['Movies'])
 def get_movie(id: int) -> JSONResponse:
     with container.AppContainer.scope() as app:
         movie_controller: MovieController = app.controllers.movie_controller()
@@ -28,7 +28,7 @@ def get_movie(id: int) -> JSONResponse:
         return JSONResponse(content=response.content, status_code=response.status_code)
 
 
-@router.post('/movies')
+@router.post('/movies', tags=['Movies'])
 def create_movie(movie: MovieSchemaIn) -> JSONResponse:
     with container.AppContainer.scope() as app:
         movie_controller: MovieController = app.controllers.movie_controller()
@@ -36,7 +36,7 @@ def create_movie(movie: MovieSchemaIn) -> JSONResponse:
         return JSONResponse(content=response.content, status_code=response.status_code)
 
 
-@router.put('/movie/{id}')
+@router.put('/movie/{id}', tags=['Movies'])
 def update_movie(id: int, movie: UpdateMovieSchema) -> JSONResponse:
     with container.AppContainer.scope() as app:
         movie_controller: MovieController = app.controllers.movie_controller()
@@ -44,7 +44,7 @@ def update_movie(id: int, movie: UpdateMovieSchema) -> JSONResponse:
         return JSONResponse(content=response.content, status_code=response.status_code)
 
 
-@router.delete('/movie/{id}')
+@router.delete('/movie/{id}', tags=['Movies'])
 def delete_movie(id: int) -> JSONResponse:
     with container.AppContainer.scope() as app:
         movie_controller: MovieController = app.controllers.movie_controller()

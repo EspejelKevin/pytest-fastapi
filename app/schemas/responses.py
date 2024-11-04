@@ -16,7 +16,7 @@ class BaseResponse:
 
 class Response:
     def __init__(self, data: Any, transaction_id: str, status_code: int = 200) -> None:
-        self.__meta = MetadataResponse(transaction_id)
-        self.__base_response = BaseResponse(data, self.__meta)
-        self.content = jsonable_encoder(self.__base_response)
+        self.meta = MetadataResponse(transaction_id)
+        self.base_response = BaseResponse(data, self.meta)
+        self.content = jsonable_encoder(self.base_response)
         self.status_code = status_code
