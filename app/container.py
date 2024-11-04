@@ -11,7 +11,7 @@ from sqlalchemy import Engine
 
 class DatabasesContainer(containers.DeclarativeContainer):
     sqlite = providers.Singleton(
-        SQLiteDatabase, uri='sqlite:///database.db')
+        SQLiteDatabase, uri='sqlite:///movies.db')
 
 
 class RepositoriesContainer(containers.DeclarativeContainer):
